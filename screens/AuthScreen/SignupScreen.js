@@ -8,7 +8,6 @@ import { authenticateAuthTokens, logoutAuthTokens } from '../../store/redux/auth
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 //import {auth} from '../../firebase';
 import { auth, db } from '../../firebase';
-import { setDoc, doc } from 'firebase/firestore'
 import { addUser } from '../../store/redux/users';
 
 
@@ -32,31 +31,6 @@ function SignupScreen() {
           username: data.email,
         }
       ));
-
-      setDoc(doc(db,"users",email),{
-        email: email,
-        password: password,
-        behaviors: {
-          behaviorId:"",
-          name:"",
-          description:"",
-          goalCount:"",
-          goalMeasurment:"",
-          startDate:"",
-          endDate:"",
-          frequency:"",
-        },
-        behaviorLogs: {
-          date:"",
-          time:"",
-          behaviorName:"",
-          behaviorID:"",
-          count:"",
-          goalCount:"",
-          goalMeasurment:""
-        } 
-
-    })
 
 
 //      createUserWithEmailAndPassword(auth,email,password);
